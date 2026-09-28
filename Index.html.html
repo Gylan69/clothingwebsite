@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marlo — Everyday clothing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#e9edf2; --fg:#101828; --muted:#5b6678; --accent:#2f4bff; --card:#f6f8fb; --on-accent:#fff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f141c; --fg:#e8edf5; --muted:#93a0b5; --accent:#7f93ff; --card:#182030; --on-accent:#0f141c;}
+}
+:root[data-theme="dark"]{--bg:#0f141c; --fg:#e8edf5; --muted:#93a0b5; --accent:#7f93ff; --card:#182030; --on-accent:#0f141c;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.55 "DM Sans",system-ui,sans-serif}
+h1,h2,.logo{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;letter-spacing:-.02em}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font-weight:700;font-size:26px;text-decoration:none}
+nav{display:flex;gap:22px;align-items:center;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--fg)}
+#bag{border:1px solid var(--muted);background:none;color:var(--fg);font:inherit;font-size:15px;border-radius:999px;padding:6px 14px;cursor:pointer}
+.hero{padding:64px 0 72px}
+.hero h1{font-size:clamp(44px,9vw,104px);line-height:.98;margin:0 0 22px;font-weight:700;max-width:11ch}
+.hero p{max-width:44ch;color:var(--muted);margin:0 0 30px;font-size:19px}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:500;padding:13px 26px;border-radius:999px}
+.btn:hover{filter:brightness(1.08)}
+h2{font-size:32px;margin:0 0 26px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;padding-bottom:80px}
+.item{background:var(--card);border-radius:14px;padding:18px 18px 20px;display:flex;flex-direction:column}
+.shirt{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.shirt i{display:block;width:78%;height:78%;background:var(--c);
+  clip-path:polygon(28% 0,38% 7%,62% 7%,72% 0,100% 20%,88% 38%,78% 31%,78% 100%,22% 100%,22% 31%,12% 38%,0 20%)}
+.item h3{margin:0;font-size:17px;font-weight:500}
+.item .meta{color:var(--muted);font-size:15px;margin:2px 0 14px}
+.item button{margin-top:auto;align-self:flex-start;font:inherit;font-size:15px;color:var(--fg);background:none;border:1px solid var(--muted);border-radius:999px;padding:7px 16px;cursor:pointer}
+.item button:hover{border-color:var(--accent);color:var(--accent)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+footer{border-top:1px solid color-mix(in srgb,var(--muted) 35%,transparent);padding:28px 0 40px;color:var(--muted);font-size:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (max-width:520px){nav a{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top">Marlo</a>
+    <nav><a href="#shop">Shop</a><a href="#contact">Contact</a><button id="bag" aria-live="polite">Bag (0)</button></nav>
+  </header>
+
+  <section class="hero" id="top">
+    <h1>Clothes for ordinary days.</h1>
+    <p>Soft cotton basics in a few good colors. Made to be worn a lot and washed even more.</p>
+    <a class="btn" href="#shop">Shop the basics</a>
+  </section>
+
+  <section id="shop">
+    <h2>The basics</h2>
+    <div class="grid">
+      <article class="item"><div class="shirt"><i style="--c:#2f4bff"></i></div><h3>Everyday Tee</h3><p class="meta">Cobalt · $28</p><button>Add to bag</button></article>
+      <article class="item"><div class="shirt"><i style="--c:#e2b93b"></i></div><h3>Everyday Tee</h3><p class="meta">Mustard · $28</p><button>Add to bag</button></article>
+      <article class="item"><div class="shirt"><i style="--c:#3f7d5c"></i></div><h3>Heavy Tee</h3><p class="meta">Pine · $36</p><button>Add to bag</button></article>
+      <article class="item"><div class="shirt"><i style="--c:#c9d0da"></i></div><h3>Heavy Tee</h3><p class="meta">Fog · $36</p><button>Add to bag</button></article>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <span>Marlo · Free shipping over $60</span>
+    <a href="mailto:hello@marlo.example">hello@marlo.example</a>
+  </footer>
+</div>
+<script>
+(function(){
+  var n=0, bag=document.getElementById('bag');
+  document.querySelectorAll('.item button').forEach(function(b){
+    b.addEventListener('click',function(){
+      n++; bag.textContent='Bag ('+n+')';
+      b.textContent='Added'; setTimeout(function(){b.textContent='Add to bag'},1200);
+    });
+  });
+})();
+</script>
+</body>
+</html>
